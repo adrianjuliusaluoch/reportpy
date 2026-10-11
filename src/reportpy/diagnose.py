@@ -1,11 +1,13 @@
 """
-diagnose.py - a text-based data diagnosis report, like R's report() but with
+diagnose - a text-based data diagnosis report, like R's report() but with
 date coverage, distribution readings, and data-quality checks.
 
 Usage in a notebook:
-    from diagnose import diagnose
+    import reportpy
     df.diagnose()                              # full report (works after the import)
     df.diagnose(brief=True)                    # header stats + warnings + takeaways only
+
+    from reportpy import diagnose
     diagnose(df, date_cols=["Date"], dayfirst=True)
     text = diagnose(df, return_text=True)      # get the text instead of printing
 """
