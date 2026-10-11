@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "reportpy"
+version = "0.1.0"
+description = "Plain-language data reports for pandas DataFrames"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Your Name" }]
+dependencies = ["pandas>=2.0", "numpy"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/YOUR-USERNAME/reportpy"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
