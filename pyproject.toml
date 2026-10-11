@@ -9,14 +9,14 @@ description = "Plain-language data reports for pandas DataFrames"
 readme = "README.md"
 requires-python = ">=3.9"
 license = "MIT"
-authors = [{ name = "Your Name" }]
+authors = [{ name = "Adrian Julius Aluoch" }]
 dependencies = ["pandas>=2.0", "numpy"]
 
 [project.optional-dependencies]
 dev = ["pytest"]
 
 [project.urls]
-Homepage = "https://github.com/YOUR-USERNAME/reportpy"
+Homepage = "https://github.com/adrianjuliusaluoch/reportpy"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
