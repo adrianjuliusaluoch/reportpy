@@ -481,11 +481,20 @@ def _numeric_block(s, name, flags, info, brief):
         n_lo, n_hi = int((x < lo).sum()), int((x > hi).sum())
         if n_lo + n_hi > 0:
             share = (n_lo + n_hi) / k
-            items.append((
-                "Outliers",
-                f"{_s(n_lo + n_hi, 'value')} ({share * 100:.1f}%) fall outside the usual fences "
-                f"[{_c(lo)}, {_c(hi)}]: {n_lo} too low, {n_hi} too high.",
-            ))
+            parts = []
+            if n_hi:
+                parts.append(f"{_s(n_hi, 'value')} ({n_hi / k * 100:.1f}%) above {_c(hi)}")
+            if n_lo:
+                parts.append(f"{_s(n_lo, 'value')} ({n_lo / k * 100:.1f}%) below {_c(lo)}")
+            text = "By the 1.5 x IQR rule, " + " and ".join(parts)
+            if not n_lo:
+                text += "; none are unusually low"
+            elif not n_hi:
+                text += "; none are unusually high"
+            text += "."
+            if share >= 0.02 and ((n_hi and skew >= 1) or (n_lo and skew <= -1)):
+                text += " The data is skewed, so many of these are probably the natural long tail, not errors."
+            items.append(("Outliers", text))
             if share > 0.05:
                 flags.append((name, f"{share * 100:.1f}% of values are outliers by the IQR rule"))
 

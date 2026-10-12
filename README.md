@@ -123,7 +123,7 @@ Polars DataFrames are accepted too. They are converted to pandas first, which ne
 
 ## Example output
 
-This is the full report for a flights table of 8,000 rows, with departures from Nairobi (Jomo Kenyatta International Airport) to Mombasa (Moi International Airport), Kisumu and Eldoret.
+Eight thousand flights, three months (October to December 2026), one departure airport and three destinations. This is the full report reportpy produced for it. Every flight leaves Jomo Kenyatta International Airport and lands at Moi International Airport, Kisumu International Airport or Eldoret International Airport, with four airlines sharing the routes.
 
 ```text
 The data contains 8,000 observations of the following 10 variables:
@@ -149,7 +149,7 @@ At a glance:
       Range: 2026-10-01 05:45 to 2026-12-31 23:59, a span of 91 days (about 3.0 months), across 92
         distinct days.
       Order: Rows are not sorted by this date.
-      Note: 90.7% of the dates are after today, so this looks like a schedule or forecast rather
+      Note: 89.9% of the dates are after today, so this looks like a schedule or forecast rather
         than a log of past events.
       Timeline: ▄▆▆▇▇▇▇███▇██▅  (rows per week, left = oldest; a dot means no records)
       Busiest weeks: week of 2026-12-14 (688, 8.60%); week of 2026-11-30 (682, 8.53%); week of
@@ -211,8 +211,8 @@ At a glance:
       Spread: SD and MAD agree, so spread is consistent across the whole range.
       Typical range: Middle 50% of values: 10,578 to 22,446. 1st to 99th percentile: 8,127 to
         51,600.
-      Outliers: 782 values (9.8%) fall outside the usual fences [-7,224, 40,248]: 0 too low, 782 too
-        high.
+      Outliers: By the 1.5 x IQR rule, 782 values (9.8%) above 40,248; none are unusually low. The
+        data is skewed, so many of these are probably the natural long tail, not errors.
       Takeaway: right-skewed with a long tail of large values; lean on median and percentiles, and
         consider a log transform.
 
@@ -226,7 +226,7 @@ At a glance:
       Range: 2026-10-01 06:40 to 2027-01-01 00:59, a span of 92 days (about 3.0 months), across 93
         distinct days.
       Order: Rows are not sorted by this date.
-      Note: 90.8% of the dates are after today, so this looks like a schedule or forecast rather
+      Note: 89.9% of the dates are after today, so this looks like a schedule or forecast rather
         than a log of past events.
       Timeline: ▄▆▆▇▇▇▇███▇██▅  (rows per week, left = oldest; a dot means no records)
       Busiest weeks: week of 2026-12-14 (688, 8.60%); week of 2026-11-30 (682, 8.53%); week of
