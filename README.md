@@ -1,4 +1,4 @@
-# reportpy
+## reportpy
 
 **A plain-language report on any pandas DataFrame, in one line.**
 
@@ -10,7 +10,7 @@ df.diagnose()
 
 reportpy reads your data and tells you, in plain sentences, what is in each column, what looks wrong, and what to clean first. It is inspired by R's `report` package, with extra checks for dates, distributions and data quality.
 
-## Why reportpy
+### Why reportpy
 
 Getting a first look at a new dataset usually means running a dozen separate snippets: `.info()`, `.describe()`, missing-value counts, value counts, date ranges, duplicate checks, correlations. Profiling tools like ydata-profiling and sweetviz bundle much of this, but they can be slow on large data and they leave the interpretation to you.
 
@@ -25,7 +25,7 @@ reportpy does it in one call and writes the findings as sentences. It also looks
 
 The expensive steps run on unique values or on a random sample, so the report stays quick on big tables.
 
-## Install
+### Install
 
 ```bash
 pip install reportpy
@@ -39,7 +39,7 @@ uv add reportpy
 
 Requires Python 3.9 or newer, pandas 2.0 or newer, and numpy.
 
-## Quick start
+### Quick start
 
 Importing the package adds a `diagnose()` method to every DataFrame:
 
@@ -59,7 +59,7 @@ from reportpy import diagnose
 diagnose(df)
 ```
 
-## Options
+### Options
 
 ```python
 diagnose(df, date_cols=None, dayfirst=False, top_n=5, brief=False, return_text=False)
@@ -83,7 +83,7 @@ text = diagnose(df, return_text=True)                    # keep the report as a 
 
 Polars DataFrames are accepted too. They are converted to pandas first, which needs `pyarrow` installed.
 
-## What the report covers
+### What the report covers
 
 **At a glance.** Rows, columns, column types, the date range of the first date columns, and a one-line summary of what needs attention.
 
@@ -121,7 +121,7 @@ Polars DataFrames are accepted too. They are converted to pandas first, which ne
 
 **Worth a closer look and a cleaning checklist.** Every warning collected in one place, followed by an ordered list of what to fix before analysis.
 
-## Example output
+### Example output
 
 Eight thousand flights, three months (October to December 2026), one departure airport and three destinations. This is the full report reportpy produced for it. Every flight leaves Jomo Kenyatta International Airport and lands at Moi International Airport, Kisumu International Airport or Eldoret International Airport, with four airlines sharing the routes.
 
@@ -264,7 +264,7 @@ Cleaning checklist (do these before the analysis):
      ticket_price.
 ```
 
-## Reading the report
+### Reading the report
 
 - **Watch** marks something that is probably wrong or that changes how you should use the column.
 - **Note** is useful context, not a problem.
@@ -272,14 +272,14 @@ Cleaning checklist (do these before the analysis):
 - **Rank correlation** goes from -1 to +1. Positive means two columns rise together, negative means one rises as the other falls, and near 0 means unrelated.
 - **Cramér's V** goes from 0 to 1. Near 0 means two categories are unrelated, near 1 means knowing one tells you the other.
 
-## Good to know
+### Good to know
 
 - The report is text only, with no charts. Small bar sparklines show shapes and timelines.
 - The thresholds are rules of thumb. They point you at what to check, and the decisions stay with you.
 - A strong relationship in the report is not proof that one thing causes another.
 - On very large tables, relationships and the half-empty-rows check use a random sample (with a fixed seed, so results repeat).
 
-## Project
+### Project
 
 - Source code and issues: https://github.com/adrianjuliusaluoch/reportpy
 - License: MIT
