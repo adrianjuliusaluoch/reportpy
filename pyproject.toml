@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "reportpy"
-version = "0.1.0"
+version = "0.1.1"
 description = "Plain-language data reports for pandas DataFrames"
 readme = "README.md"
 requires-python = ">=3.9"
